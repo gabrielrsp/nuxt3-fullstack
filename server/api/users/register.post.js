@@ -26,6 +26,10 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    data: 'hello world'
+    data: {
+      id: 1,
+      name,
+      email
+    }
   }
 })
