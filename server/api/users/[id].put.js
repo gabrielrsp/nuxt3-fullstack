@@ -1,5 +1,7 @@
+import { updateUser } from "~/server/repository/users"
+
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, "id")
+  const id = event.context.params.id
   const body = await readBody(event)
 
   const { name, email} = body
@@ -10,13 +12,11 @@ export default defineEventHandler(async (event) => {
     }))
   }
 
+  const data = await updateUser(id, {name, email});
+
     return {
       success: true,
-      data: {
-        id: 1,
-        name,
-        email
-      }
+      data
     }
 
 })

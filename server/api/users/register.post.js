@@ -1,3 +1,5 @@
+import { createUser } from "~/server/repository/users"
+
 // função que vai interceptar as requisições que são enviadas para o servidor
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -24,12 +26,14 @@ export default defineEventHandler(async (event) => {
     )
    }
 
+   const data = await createUser({
+    name,
+    email,
+    password
+   })
+
   return {
     success: true,
-    data: {
-      id: 1,
-      name,
-      email
-    }
+    data
   }
 })
