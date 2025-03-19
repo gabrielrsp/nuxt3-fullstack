@@ -1,5 +1,5 @@
 export default defineEventHandler((event) => { 
-  const openEndPoints = ["/api/users/register"];
+  const openEndPoints = ["/api/users/register", '/'];
 
   if(openEndPoints.includes(event.req.url)) {
     return
